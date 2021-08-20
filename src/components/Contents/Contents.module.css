@@ -1,0 +1,40 @@
+.box {
+  width: 50%;
+  padding: 1.2em;
+  background-color: rgb(25, 31, 44);
+  margin: 0 auto;
+  margin-top: 1.5em;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+
+.section {
+  color: rgb(183, 193, 204);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+.coronaNumber {
+  display: flex;
+  color: whitesmoke;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.case {
+  width: 25%;
+}
+
+.confirm {
+  color: rgb(183, 193, 204);
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.confirmCase {
+  text-align: center;
+  font-size: 2.5rem;
+  color: whitesmoke;
+}
