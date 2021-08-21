@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './Chart.module.css';
 import { Bar } from 'react-chartjs-2';
 

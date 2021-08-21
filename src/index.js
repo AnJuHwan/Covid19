@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App.jsx';
 import reportWebVitals from './reportWebVitals';
+import CovidData from './service/covid';
+
+const covidData = new CovidData();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App covidData={covidData} />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function
