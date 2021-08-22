@@ -6,22 +6,28 @@ import { useEffect, useState } from 'react';
 
 function App({ covidData }) {
   const [todaycovidData, setTodayCovidData] = useState(0);
+  const [death, setDeath] = useState([]);
+
   const date = new Date();
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
-  const day = date.getDate() - 1;
+  const day = date.getDate() - 2;
+
   useEffect(() => {
     covidData
       .todayCases(year, month, day)
       .then((item) => setTodayCovidData(item));
-  }, [covidData]);
+
+    covidData.todayDeaths().then((item) => setDeath(item));
+  }, [covidData, year, month, day]);
+  console.log(death);
 
   return (
     <>
-      {todaycovidData && (
+      {todaycovidData & (death != []) && (
         <>
           <Header />
-          <Contents todaycovidData={todaycovidData} />
+          <Contents todaycovidData={todaycovidData} death={death} />
           <Chart />
         </>
       )}

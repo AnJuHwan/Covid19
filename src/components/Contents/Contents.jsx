@@ -1,7 +1,9 @@
 import React from 'react';
 import styles from './Contents.module.css';
 
-const Contents = ({ todaycovidData }) => {
+const Contents = ({ todaycovidData, death }) => {
+  const lastIndex = death.length - 1;
+  console.log(death);
   return (
     <>
       <div className={styles.box}>
@@ -13,7 +15,7 @@ const Contents = ({ todaycovidData }) => {
         </div>
         <div className={styles.coronaNumber}>
           <span className={styles.case}>{todaycovidData}</span>
-          <span className={styles.case}>1,111</span>
+          <span className={styles.case}>{death[lastIndex].Deaths}</span>
           <span className={styles.case}>111,111</span>
           <span className={styles.case}>11,111,111</span>
         </div>
@@ -28,4 +30,3 @@ const Contents = ({ todaycovidData }) => {
 };
 
 export default Contents;
-// {todaycovidData.data[0].Cases}
