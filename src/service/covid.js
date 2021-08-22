@@ -11,12 +11,14 @@ class CovidData {
     return response;
   }
 
-  todayDeaths() {
-    const response = axios
+  async allCovidData() {
+    const response = await axios
       .get('https://api.covid19api.com/dayone/country/kr')
       .then((item) => {
         return item.data.sort((data) => data.Data);
-      });
+      })
+      .catch((e) => e);
+
     return response;
   }
 }
