@@ -5,47 +5,28 @@ import Chart from './components/Chart/Chart';
 import { useEffect, useState } from 'react';
 
 function App({ covidData }) {
-  const [todaycovidData, setTodayCovidData] = useState([]);
-  const [death, setDeath] = useState([]);
-  const [recovered, setRecovered] = useState();
+  const [getcovidData, setGetCovidData] = useState();
 
   const date = new Date();
   const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate() - 2;
-
-  useEffect(() => {
-    // 현재 확진자 총 수
-    covidData
-      .todayCases(year, month, day)
-      .then((item) => setTodayCovidData(item));
+  const month =
+    date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth;
+  const day = date.getDate() - 5;
+  useEffect(async () => {
+    await covidData
+      .getCovidData(year, month, day)
+      .then((item) => setGetCovidData(item));
   }, [covidData, year, month, day]);
+  console.log(getcovidData);
+  console.log('렌더링');
 
-  useEffect(() => {
-    // 일일 사망자 수
-    covidData
-      .allCovidData()
-      .then((item) => setDeath(item[item.length - 1].Deaths));
-
-    // 완치자 : API가 최신 Recovered를 받지를 못함
-    covidData.allCovidData().then((item) => {
-      const length = item.length - 1;
-      setRecovered(item[length].Recovered);
-    });
-  }, []);
-
-  console.log('???');
   return (
     <>
-      {todaycovidData && (
+      {getcovidData && (
         <>
           <Header />
-          <Contents
-            todaycovidData={todaycovidData}
-            death={death}
-            recovered={recovered}
-          />
-          <Chart />
+          <Contents getcovidData={getcovidData} />
+          <Chart getcovidData={getcovidData} />
         </>
       )}
     </>
