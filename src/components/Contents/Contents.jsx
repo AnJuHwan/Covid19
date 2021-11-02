@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './Contents.module.css';
 
 const Contents = ({ getcovidData }) => {
-  const todayConfirm = getcovidData[4].Confirmed - getcovidData[3].Confirmed;
+  const todayConfirm = getcovidData[3].Confirmed - getcovidData[2].Confirmed;
   return (
     <>
       <div className={styles.box}>
@@ -14,13 +14,13 @@ const Contents = ({ getcovidData }) => {
         </div>
         <div className={styles.coronaNumber}>
           <span className={styles.case}>
-            {getcovidData[4].Confirmed.toLocaleString()}
+            {getcovidData[3].Confirmed.toLocaleString()}
           </span>
           <span className={styles.case}>
-            {getcovidData[4].Deaths.toLocaleString()}
+            {getcovidData[3].Deaths.toLocaleString()}
           </span>
           <span className={styles.case}>
-            {getcovidData[4].Recovered.toLocaleString()}
+            {getcovidData[3].Recovered.toLocaleString()}
           </span>
         </div>
       </div>

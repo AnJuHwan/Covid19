@@ -13,3 +13,5 @@ class CovidData {
 }
 
 export default CovidData;
+
+// https://corona.lmao.ninja/v2/historical/S. Korea?lastdays=4
